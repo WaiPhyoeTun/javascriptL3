@@ -1,87 +1,216 @@
 *{
-    box-sizing: border-box;
+    font-family:sans-serif;
+    box-sizing:border-box;
 }
 
 body{
-    background: #f6f6f6f6;
-    height: 100vh;
+    height:100vh;
+    background-color:#f6f6f6;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    padding: 0;
-    margin: 0;
-
+    padding:0;
+    margin:0;
 }
 
-.logo{
-    width: 75px;
-    border-radius: 50%;
+/* Start Navigation  */
+.navbar{
+    width:100%;
+    background:#333;
 
-}
-.nav-btn{
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    cursor: pointer;
-}
-.open-btn{
-    position: fixed;
-    left: 10px;
-    top: 10px;
+    position:fixed;
+    top:0;
+    left:0;
 
-}
-.close-btn{
-    color: #fff;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    
-    opacity: 0.5;
-}
-.close-btn:hover{
-    color: red;
-}
-.nav{
-    height: 100vh;
-    padding: 30px;
+    display:flex;
+    justify-content:end;
 
-    color: #fff;
+    padding:0 30px;
+}
 
-    position: fixed;
+.navbar a{
+    text-decoration:none;
+    color:#fff;
+
+    padding:15px 20px;
+}
+
+.dropdown .dropdown-toggle{
+    background-color:inherit;
+    color:#fff;
+    border:none;
+    outline:none;
+    font-size:16px;
+    padding:15px 20px;
+}
+
+.navbar a:hover,.dropdown:hover .dropdown-toggle{
+    background:slateblue;
+}
+
+.dropdown-menu,.dropdown-menu-mega{
+    min-width:130px;
+    background:#f4f4f4;
+    box-shadow:0 10px 15px rgba(0,0,0,0.2);
+
+    position:absolute;
+    z-index:1;
+
+    display:none;
+}
+
+.dropdown-menu a{
+    color:#000;
+    text-decoration:none;
+
+    display:block;
+    text-align:left;
+}
+
+.dropdown-menu a:hover{
+    background:#ddd;
+}
+
+.dropdown:hover .dropdown-menu,.dropdown:hover .dropdown-menu-mega{
+    display:block;
+}
+
+.dropdown-menu-mega{
+    width: 100%;
     left: 0;
-    top: 0;
+}
+.dropdown-menu-mega .header{
+    background: linear-gradient(75deg,gray,black);
+    color: #fff;
+    padding: 10px;
+}
+.row{
+    display: flex;
+    background-color:#f4f4f4;
+    padding: 30px;
+}
+.col-4{
+    width: 33.33%;
+}
+.col-4 h4{
+    text-align: center;
+    text-decoration: underline;
+}
+.col-4 a{
+    color: #000;
+    text-decoration: none;
+    text-align: center;
     
-    transform: translate(-100%);
+    padding: 20px;
+    display: block;
+}
+.col-4 a:hover{
+    color: #fff;
+}
 
+/* End Navigation */
+
+/* Start Siderbar */
+.logo{
+    width:75px;
+    border-radius:50%;
 }
+
+.nav-btn{
+    border:none;
+    background-color:transparent;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.open-btn{
+    position:fixed;
+    left:10px;
+    top:10px;
+
+    z-index:2;
+}
+
+.fa-bars{
+    color:#fff;
+}
+
+.close-btn{
+    color:#fff;
+    position:absolute;
+    right:10px;
+    top:10px;
+}
+
+.close-btn:hover{
+    color:red;
+}
+
+.nav{
+    /* width:280px; */
+    height:100vh;
+    padding:30px;
+    position:fixed;
+    left:0;
+    top:0;
+
+    z-index:3;
+
+    transform:translateX(-100%);
+    transition:all 0.3s ease;
+}
+
 .nav.nav-bg{
-    background-color: #000;
+    background-color:#000;
 }
+
 .nav.visible{
-    transform: translate(0);
+    transform:translate(0);
 }
 
 .list-group{
-    list-style-type: none;
-    padding: 0;
+    list-style:none;
+    padding:0;
+    margin:0;
 }
-.list-group li{
-    margin: 25px 0;
-}
-.list-group .list-group-item{
-    color: #fff;
-    font-size: 15px;
-    text-decoration: none;
-    text-transform: uppercase;
 
+.list-group li{
+    margin:25px 0;
+}
+
+.list-group .list-group-item{
+    background-color: steelblue;
+    text-decoration:none;
+    color:#fff;
+    font-size:15px;
+    text-transform:uppercase;
+
+    padding: 10px;
+    display: block;
+
+    transition: all .3s;
 }
 
 .list-group ul{
-    list-style: none;
+    list-style:none;
+}
+.list-group ul .list-group-item{
+    background-color: slateblue;
 }
 
+.list-group .list-group-item:hover{
+    opacity: .8;
+    transform: translate(10px);
+}
+.list-group .list-group-item:active{
+    background-color: darkblue;
+    opacity: 1;
+    transform: translate(0);
+}
+/* End Siderbar */
+/* 5NV */
 
 
 /* 30NB */
