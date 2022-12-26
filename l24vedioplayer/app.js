@@ -114,7 +114,7 @@ function updateprogress(e){
         progress.value = (getvideoscreen.currentTime / getvideoscreen.duration) * 100
     }
 
-    progress.value = (getvideoscreen.currentTime / getvideoscreen.duration) * 100
+    // progress.value = (getvideoscreen.currentTime / getvideoscreen.duration) * 100
 
 
     let getmins = Math.floor(getvideoscreen.currentTime/60);
