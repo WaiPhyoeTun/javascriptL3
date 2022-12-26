@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multi Video Player</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+
+<div class="container">
+
+    <h1>Video Player</h1>
+    <video src="./source/samplevideo1.mp4" id="videoscreen" class="videoscreen"></video>
+
+   <div class="controls">
+        <button id="prev" class="ctrl-btn">
+            <i class="fas fa-backward"></i>
+        </button>
+
+        <button id="play" class="ctrl-btn">
+            <i class="fas fa-play"></i>
+        </button>
+
+        <button id="next" class="ctrl-btn">
+            <i class="fas fa-forward"></i>
+        </button>
+
+        <button id="stop" class="ctrl-btn">
+            <i class="fas fa-stop"></i>
+        </button>
+
+        <input type="range" name="progress" id="progress" class="progress" min="0" max="100" value="0"/>
+
+        
+        <span id="openfullscreen" class="openfullscreen"><i id="fullscreen" class="fas fa-expand-arrows-alt"></i></span>
+        <span id="closefullscreen" class="closefullscreen"><i id="fullscreen" class="fas fa-expand"></i></span>
+
+
+
+            <span id="displaytime" class="displaytime">00:00</span>
+        </i>
+   </div>
+
+</div>
+
+        <script src="app.js"></script>
+
+    </body>
+</html>
+
+
+<!-- 14VD -->

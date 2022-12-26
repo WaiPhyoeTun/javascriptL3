@@ -1,0 +1,75 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+
+    flex-direction: column;
+
+}
+
+.videoscreen{
+    width:80%;
+    cursor:pointer;
+}
+
+.controls{
+    width:80%;
+    background-color:#222;
+    color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items: center;
+
+    padding:12px 0;
+}
+
+.ctrl-btn{
+    background-color:transparent;
+    color:#fff;
+    border:none;
+    outline:none;
+    cursor: pointer;
+}
+
+.progress{
+    width:70%;
+    margin-right: 10px;
+}
+
+.fullscreen{
+    margin:0 10px;
+}
+
+.ctrl-btn .fa-play{
+    color: steelblue;
+}
+
+.ctrl-btn .fa-stop{
+    color: tomato;
+}
+
+.closefullscreen{
+    display: none;
+}
+
+.progress .fullscreen{
+    cursor: pointer;
+}
+.displaytime{
+    margin-left: 10px;
+}
+
+/* 14VD */
