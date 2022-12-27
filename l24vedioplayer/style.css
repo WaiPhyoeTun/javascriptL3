@@ -16,6 +16,7 @@ body{
     align-items: center;
 
     flex-direction: column;
+    position: relative;
 
 }
 
@@ -69,6 +70,7 @@ body{
     transition: width .1s linear;
     
 }
+/*End For progress  */
 
 .fullscreen{
     margin:0 10px;
@@ -91,6 +93,25 @@ body{
 }
 .displaytime{
     margin-left: 10px;
+}
+
+
+.pannel{
+    background-color: steelblue;
+    padding: 0 3px;
+    color: #fff;
+
+    position: absolute;
+    left: 10%;
+    top: 80%;
+
+    z-index: -1;
+
+    transition: top .5s ease-in-out;
+}
+
+.container:hover .pannel{
+    top: 100%;
 }
 
 /* 14VD */
