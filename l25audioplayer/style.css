@@ -78,3 +78,7 @@ body{
 .ctrl-btn .fa-pause{
     color: #fff;
 }
+
+.displaytime{
+    padding: 10px;
+}
