@@ -141,13 +141,13 @@ function totalvalue(){
 	// console.log(amounts);
 
 	// Method 1 
-	const result = amounts.reduce(function(total,curvalue){
-		total += curvalue;
-		return total;
-	},0).toFixed(2);
+	// const result = amounts.reduce(function(total,curvalue){
+	// 	total += curvalue;
+	// 	return total;
+	// },0).toFixed(2);
 
 	// Method 2
-	totalresult = amounts.reduce((total,curvalue)=>(total += curvalue),0).toFixed(2);
+	const totalresult = amounts.reduce((total,curvalue)=>(total += curvalue),0).toFixed(2);
 	// console.log(result);
 
 	const debitresult = amounts.filter(amount=>amount > 0).reduce((total,curvalue)=>(total += curvalue),0).toFixed(2);
