@@ -1,120 +1,160 @@
 //Get UI
 const minnum = document.querySelector(".minnumber"),
-      maxnum = document.querySelector('.maxnumber'),
-      getinput = document.querySelector('#guessnumber'),
-      getbtn = document.querySelector("#btn"),
-      getmessage1 = document.querySelector('.message1'),
-      getmessage2 = document.querySelector('.message2'),
-      getgamecnt = document.getElementById('game-container'),
-      getmicbtn = document.querySelector('#mic-btn');
+	maxnum = document.querySelector(".maxnumber");
+
+const getinput = document.querySelector('#guessnumber');
+const getbtn = document.querySelector('#btn');
+
+const message1 = document.querySelector('.message1');
+const message2 = document.querySelector('.message2');
+
+const getgamecnt = document.getElementById('game-container');
+const getmicbtn = document.getElementById('mic-btn');
 
 const getvoccnt = document.getElementById('voice-container');
 
 let min = 10,
-    max = 100,
-    gameleft = 3,
-    winningnumber = 10;
+	max = 100,
+	gameleft = 3,
+	winningnum = randomnum(min,max);
 
-    minnum.textContent = min;
-    maxnum.textContent = max;
+minnum.innerText = min;
+maxnum.textContent = max;
+
 
 function randomnum(min,max){
-    let getrdm = Math.random() * (max-min)+1;
-    return getrdm;
+	let getrdm = Math.floor(Math.random()*(max-min)+10);
+	return getrdm;
 }
 
-// console.log(winningnumber)
+console.log(winningnum);
 
-//for Chrome Browser Support
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+// For Chrome Browser Support
+	window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-let getrec = new window.SpeechRecognition;
-// console.log(getrec);
+	let getrec = new window.SpeechRecognition;
 
-getmicbtn.addEventListener('click',function(){
-    // console.log("hi");
-    // console.log(getrec);
+    getmicbtn.addEventListener('click', function () {
+        // console.log('working');
+    
+        // console.log(getrec);
+    
+        // Start Recognition ,start() come from Recognition api
+    
+        getrec.start();
+        getrec.addEventListener('result', (e) => talking(e)); //object tyoe ko lo chin lo event ko pyan py tr
+    
+    
+    });
     
 
-    // Start Recognition , start() come from Recognition api 
-    getrec.start();
-    getrec.addEventListener('result',(e)=>talking(e));
-});
 
 function talking(ele){
-    console.log(ele);
-    const micresult = ele.results[0][0].transcript;
-    console.log(micresult);
+	// console.log(ele);
+	const micresult = ele.results[0][0].transcript;
+	// console.log(micresult);
 
-    micmessage(micresult);
-    getnumber(micresult);
+	micmessage(micresult);
+	getnumber(micresult);
 }
 
 function micmessage(msg){
-    getvoccnt.innerHTML = `<span class="voicemessage">Did you say !!! ${msg}!?</span>`
+	getvoccnt.innerHTML = `
+	<span class="voicemessage">Did you say !!! ${msg}</span>
+	`;
 }
 
 function getnumber(msg){
-    const getnum = +msg;
-    console.log(typeof getnum);
-    getinput.value = getnum;
+	const getnum = +msg;
+	// console.log(typeof getnum);
+
+    if(Number.isNaN(getnum)){
+        getvoccnt.innerHTML += `<div>This is not a valid number.</div>`;
+        return false;
+        
+    }
+
+    
+    
+	getinput.value = getnum;
+    //Start Recognition , stop() come from Recognition api
+	getrec.stop();
+
 }
 
 function setmessage1(msg,color){
-    getmessage1.textContent = msg;
-    getmessage1.style.color = color;
+	message1.textContent = msg;
+	message1.style.color = color;
 }
 
 function setmessage2(msg,color){
-    getmessage2.textContent = msg;
-    getmessage2.style.color = color;
+	message2.textContent = msg;
+	message2.style.color = color;
 }
 
 function gameover(won,msg){
-    let color;
+	let color;
 
-    won === true? color = "green" : color = "red";
-    getinput.disabled = true;
+	won === true? color = 'green' : color = 'red';
 
-    getinput.style.borderColor = color;
-    setmessage1(msg,color);
-    getbtn.value = "Play Again";
-    getbtn.classList.add('playagain');
+	getinput.disabled = true;
+
+	getinput.style.borderColor = color;
+
+	setmessage1(msg,color);
+
+	getbtn.value = 'Play Again';
+
+	getbtn.classList.add('playagain');
 }
 
+
 getbtn.addEventListener('click',function(){
-    let guess = +getinput.value;
-    // console.log(typeof guess)
+	let guess = +getinput.value;
+	// console.log(guess);
 
-    if(guess < min || guess > max || isNaN(guess)){
-        setmessage2(`Please enter a number between ${min} to ${max}`,"red");
-    }
+	if(guess < min || guess > max || isNaN(guess)){
+		setmessage2(`Please enter a number between ${min} to ${max}`,'red');
+	}
 
-    if(guess === winningnumber){
-        // Game Over Won
-        gameover(true,`${winningnumber} is correct!! You win`);
-        
-    }else{
-        gameleft--;
-        if(gameleft === 0){
-            // Game Over Lose
-            gameover(false,`Game Over , You Lost , The correct Number is ${winningnumber}`);
-        }else{
-            //Continue Game
-            getinput.style.borderColor = "red";
-            getinput.value = "";
-            setmessage1(`${guess} is not correct , ${gameleft} guess left`,'blue');
-        }
-    }
+	if(guess === winningnum){
+
+		// Game Over WON
+		gameover(true,`${winningnum} is correct!!, Youn Won`);
+		
+	}else{
+		gameleft--;
+
+		if(gameleft === 0){
+			//Game Over LOSE
+			gameover(false,`Game Over, You Lost, The correct number is ${winningnum}`);
+
+		}else{
+			//Continue Game
+			getinput.style.borderColor = "red";
+			getinput.value = "";
+			setmessage1(`${guess} is not correct , ${gameleft} guess left`,'blue');
+
+
+            if(guess > winningnum){
+                getvoccnt.innerHTML += `<div>You should go down a bit</div>`;
+            }else if(guess < winningnum){
+                getvoccnt.innerHTML += `<div>You should go up a bit</div>`;
+            }
+            
+
+		}
+
+	}
 });
+
 
 getgamecnt.addEventListener('mousedown',function(e){
-    // console.log(e.target);
-    if(e.target.classList.contains('playagain')){
-        window.location.reload();
-    }
+	console.log(e.target);
+	if(e.target.classList.contains('playagain')){
+		window.location.reload();
+	}
 });
 
-// 9VI
 
-// 17RC
+// 18VC
