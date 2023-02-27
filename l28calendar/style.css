@@ -108,7 +108,7 @@ body{
 	float: left;
 }
 
-.caldates .days .day.blank{
+.caldates .days .day.blanks{
 	background-color: #ffff;
 	border: none;
 }
